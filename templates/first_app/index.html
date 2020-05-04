@@ -2,6 +2,11 @@
 {% load static %}
 {% block body_block%}
     <h1>Index Page</h1>
-    <img src="{% static 'first_app/logo.png' %}">
-    <a href="{% url 'first_app:dashboard' %}">Dashboard</a>
+    <img src="{% static 'first_app/logo.png' %}" height="10"><br>
+    <a href="{% url 'first_app:dashboard' %}">Dashboard</a><br>
+
+    <form method="get" action="{% url "first_app:dashboard" %}">
+    <input type="text" name="email">
+    <input type="submit">
+    </form>
 {% endblock %}
