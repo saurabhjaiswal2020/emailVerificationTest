@@ -5,6 +5,10 @@
 
     <h1>Dashboard Page</h1>
     <a href="{% url 'first_app:index' %}">Index Page</a>
-    <h1>{{ response }}</h1>
+
+    <p>Email: {{ email }}</p>
+    <p>Domain: {{ domain }}</p>
+    <h1>Email Status: {{ status }}</h1>
+    <h1>Disposable: {{ disposable }}</h1>
 
 {% endblock %}

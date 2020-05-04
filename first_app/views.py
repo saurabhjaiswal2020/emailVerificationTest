@@ -6,7 +6,7 @@ import os
 import subprocess
 import re
 
-from myapp import create_file
+from myapp import *
 
 # Create your views here.
 def index(request):
@@ -15,20 +15,29 @@ def index(request):
 def dashboard(request):
     regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
 
-    email = request.GET.get('email', default="admin@gmail.com").strip()
+    email = request.GET.get('email', default="").strip()
+    domain = email.split('@')[1]
 
-    if email == 'admin@gmail.com':
+    if email == '':
         status = "Provide an Email"
     else:
         if (re.search(regex, email)):
             status = "Email is Valid"
+            disposable = disposable_check(domain)
             create_file('valid_emails.txt', email)
+            print(disposable)
         else:
             create_file('invalid_emails.txt', email)
+            disposable = disposable_check(domain)
             status = "Email is InValid"
 
 
-    page_data = {'response': status}
+    page_data = {
+        'email': email,
+        'domain': domain,
+        'status': status,
+        'disposable': disposable
+    }
 
     # p = subprocess.Popen('python myapp.py', stdout=subprocess.PIPE, shell=True)
 
