@@ -1,0 +1,7 @@
+{% extends 'first_app/base.html' %}
+{% load static %}
+{% block body_block%}
+    <h1>Index Page</h1>
+    <img src="{% static 'first_app/logo.png' %}">
+    <a href="{% url 'first_app:dashboard' %}">Dashboard</a>
+{% endblock %}
