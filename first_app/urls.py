@@ -5,5 +5,6 @@ app_name = 'first_app'
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('dashboard/', views.dashboard, name="dashboard")
+    path('dashboard/', views.dashboard, name="dashboard"),
+    path('cbview/',views.CBView.as_view()),
 ]
